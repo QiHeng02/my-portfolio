@@ -719,23 +719,185 @@
             opacity: 0.6;
         }
         
-        /* Media Queries */
-        @media (max-width: 992px) {
-            .featured-grid {
-                grid-template-columns: repeat(2, 1fr);
+        /* Mobile Navigation Styles - ADD THIS FIRST */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Mobile phones (up to 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
             }
             
-            .about-content {
-                flex-direction: column;
-                gap: 2rem;
+            /* Navigation */
+            nav {
+                padding: 1rem;
             }
             
-            .about-img {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
                 width: 100%;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem;
+                display: block;
+            }
+            
+            /* Hero Section */
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
+            /* Section headers */
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            /* About section */
+            .about {
+                padding: 4rem 0;
+            }
+            
+            .about-text h2 {
+                font-size: 2rem;
+            }
+            
+            .about-text p {
+                font-size: 1rem;
+            }
+            
+            /* Contact form */
+            .contact {
+                padding: 4rem 0;
+            }
+            
+            .form-control {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .submit-btn {
+                width: 100%;
+                padding: 1rem;
+                min-height: 44px;
+                font-size: 1rem;
+            }
+            
+            /* Footer */
+            footer {
+                padding: 3rem 0;
+            }
+            
+            .footer-content {
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Touch targets */
+            .btn {
+                min-height: 44px;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                display: block;
+                margin: 0.5rem auto;
+                width: fit-content;
+            }
+            
+            .carousel-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
-        
+
+        /* Tablets (481px to 768px) */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem;
+                display: block;
+            }
+            
             .hero h1 {
                 font-size: 3rem;
             }
@@ -759,8 +921,38 @@
                 display: block;
                 margin: 0.5rem auto;
                 width: fit-content;
+                min-height: 44px;
             }
+            
+            /* About section adjustments */
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .about-img {
+                justify-content: center;
+            }
+            
+            .about-img img {
+                width: 80%;
+            }
+        }
 
+        /* Larger tablets and small desktops (769px to 992px) */
+        @media (max-width: 992px) {
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .about-img {
+                width: 100%;
+            }
         }
         
         /* Animations */
@@ -804,6 +996,11 @@
     <nav> <!-- The "bar" at the top that allows user to click and nagivate to different sections or sites -->
         <div class="container nav-container"> <!-- Just create the text and main "items", still need to design/css the style and appearance -->
             <div class="logo">Aw Qi Heng</div>
+            <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
             <ul class="nav-links"> <!-- Unordered Lists -->
                 <li><a href="#home">Home</a></li>
                 <li><a href="#featured">Work</a></li>
@@ -820,7 +1017,7 @@
             <p>I am an undergraduate at Nanyang Technological University (NTU), pursuing a Bachelor of Engineering in Information Engineering and Media. My strong interests lies in Front-End Development, Design and Machine Learning.</p>
             <a href="#featured" class="btn">Explore My Work! :)</a>
             <a href="#about" class="btn">More About Me! :)</a>
-            <div> <small class="hero-footer-text"> Disclaimer: The visual background used here is not my intellectual property and is used as a tribute to the Attack on Titan series manga, my favorite piece of media. All rights belong to the original creators.</small></div>
+            <div> <small class="hero-footer-text"> Disclaimer: The visual background used here is not my intellectual property and is used as a tribute to the Attack on Titan series, my favorite piece of media. All rights belong to the original creators.</small></div>
         </div>
         <div class="hero-img"></div>
     </section>
@@ -1013,17 +1210,18 @@
                 <h2>Let's Create Something Beautiful Together</h2>
             </div>
             <form id="contactForm" class="contact-form reveal">
+                <input type="hidden" name="_subject" value="Portfolio Contact Form">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Name" required>
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Your Email" required>
+                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Subject" required>
+                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Your Message"></textarea>
+                    <textarea name="message"class="form-control" placeholder="Your Message"></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
                 <div id="statusMessage" class="status-message"></div>
@@ -1137,6 +1335,25 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Send Message';
             });
+        });
+        
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
         });
 
 
