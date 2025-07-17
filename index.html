@@ -835,14 +835,22 @@
             /* Footer */
             footer {
                 padding: 3rem 0;
-            }
-            
-            .footer-content {
                 text-align: center;
             }
             
+            .footer-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* centers items horizontally */
+                text-align: center;
+                gap: 1rem; /* adds spacing between items */
+            }
+            
             .social-links {
+                display: flex;
                 justify-content: center;
+                gap: 1rem; /* spacing between icons */
+                flex-wrap: wrap;
             }
             
             /* Touch targets */
